@@ -9,9 +9,10 @@ public class Village {
 	private Gaulois[] villageois;
 	private int nbVillageois = 0;
 
-	public Village(String nom, int nbVillageoisMaximum) {
+	public Village(String nom, int nbVillageoisMaximum, int nbEtalsMax) {
 		this.nom = nom;
 		villageois = new Gaulois[nbVillageoisMaximum];
+		Marche marche = new Marche(nbEtalsMax);
 	}
 
 	public String getNom() {
@@ -55,6 +56,14 @@ public class Village {
 			}
 		}
 		return chaine.toString();
+	}
+	
+	public String installerVendeur(Gaulois vendeur, String produit, int nbProduit) {
+		StringBuilder str = new StringBuilder();
+		int numEtalLibre = marche.trouverEtalLibre();
+		
+		str.append(vendeur.getNom() + " cherche un endroit pour vendre " + nbProduit + produit + "\n");
+		
 	}
 	
 	private static class Marche {
